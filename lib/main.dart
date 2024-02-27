@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:neobis_first_app/app/domain/provider/task_view_model.dart';
 import 'package:neobis_first_app/app/ui/task_view_page.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(const NeobisFirstApp());
@@ -10,12 +13,15 @@ class NeobisFirstApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: false,
+    return ChangeNotifierProvider(
+      create: (context) => TaskViewmodel(),
+      child: MaterialApp(
+        theme: ThemeData(
+          useMaterial3: false,
+        ),
+        debugShowCheckedModeBanner: false,
+        home:const  TaskViewPage(),
       ),
-      debugShowCheckedModeBanner: false,
-      home:const  TaskViewPage(),
     );
   }
 }

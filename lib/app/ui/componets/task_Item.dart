@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:neobis_first_app/app/domain/provider/task_view_model.dart';
+import 'package:provider/provider.dart';
 
 class TaskItem extends StatelessWidget {
   final String taskName;
   final String time;
-  const TaskItem({super.key, required this.taskName, required this.time});
+  final int index;
+  const TaskItem({super.key, required this.taskName, required this.time, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    final taskProvider = Provider.of<TaskViewmodel>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -21,7 +25,7 @@ class TaskItem extends StatelessWidget {
             ],
           ),
           IconButton(
-            onPressed: (){},
+            onPressed: ()=>taskProvider.delateTask(index),
             color: Colors.red,
             icon:const Icon(Icons.delete)
           )
