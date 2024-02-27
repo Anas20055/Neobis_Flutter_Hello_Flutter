@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neobis_first_app/app/domain/provider/task_view_model.dart';
+import 'package:neobis_first_app/app/domain/provider/task_provider.dart';
 import 'package:neobis_first_app/app/ui/task_view_page.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,7 @@ class NeobisFirstApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TaskViewmodel(),
+      create: (context) => TaskProvider(),
       child: MaterialApp(
         theme: ThemeData(
           useMaterial3: false,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neobis_first_app/app/domain/provider/task_view_model.dart';
+import 'package:neobis_first_app/app/domain/provider/task_provider.dart';
 import 'package:neobis_first_app/app/ui/componets/my_diolog.dart';
 import 'package:neobis_first_app/app/ui/componets/task_Item.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +13,8 @@ class TaskViewPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Task app'),
       ),
-      body: Consumer<TaskViewmodel>(builder: (context, taskProvider, _) {
+      body: Consumer<TaskProvider>(builder: (context, taskProvider, _) {
+        taskProvider.loadTasks();
         return taskProvider.tasks.isEmpty
             ? const Center(
                 child: Text('You don\'t have tasks right now'),

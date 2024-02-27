@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:neobis_first_app/app/domain/provider/task_view_model.dart';
+import 'package:neobis_first_app/app/domain/entity/task_entity.dart';
+import 'package:neobis_first_app/app/domain/provider/task_provider.dart';
 import 'package:provider/provider.dart';
 
 class MyDiolog extends StatefulWidget {
@@ -23,7 +24,7 @@ class _MyDiologState extends State<MyDiolog> {
 
   @override
   Widget build(BuildContext context) {
-    final taskProvider = Provider.of<TaskViewmodel>(context, listen: false);
+    final taskProvider = Provider.of<TaskProvider>(context, listen: false);
     return SimpleDialog(
       children: [
         Form(
@@ -60,7 +61,7 @@ class _MyDiologState extends State<MyDiolog> {
                   onPressed: () {
                     if (formKey.currentState?.validate() == true) {
                       Navigator.pop(context);
-                      taskProvider.addTask(taskNameController.text, timeController.text);
+                      taskProvider.addTask(Task(task:taskNameController.text,time: timeController.text));
                     }
                   },
                   style: ButtonStyle(
